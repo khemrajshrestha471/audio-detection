@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Amplitude Detection</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="wave.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Audio Amplitude Detection</h1>
+    <button id="recordButton">Record Audio (<span id="timer">10</span>s)</button>
+    <p class="result">Mean Amplitude: <span id="amplitudeValue">N/A</span></p>
+
+    <h2>Real-time Waveform</h2>
+    <button id="startRecording">Start Recording</button>
+    <button id="stopRecording" disabled>Stop Recording</button>
+    <canvas id="waveform" width="600" height="200"></canvas>
+    <span id="amplitudeValue2">Real Time Mean Amplitude: N/A</span>
+</body>
+</html>
