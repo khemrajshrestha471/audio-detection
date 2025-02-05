@@ -5,9 +5,10 @@ import { saveAmplitude } from "./indexdb.js";
 
 // Recording button event listener
 document.getElementById('recordButton').addEventListener('click', async function () {
+  const button = this;
   const timerElement = document.getElementById('timer');
   let timeLeft = 9;
-
+  button.disabled = true;
   const countdown = setInterval(() => {
     if (timeLeft > 0) {
       timerElement.textContent = timeLeft;
@@ -15,6 +16,7 @@ document.getElementById('recordButton').addEventListener('click', async function
     } else {
       clearInterval(countdown);
       timerElement.textContent = "10"; // Reset after completion
+      button.disabled = false;
     }
   }, 1000);
 
@@ -99,11 +101,11 @@ async function handleAmplitudeUpdate(meanAmplitude) {
     let meanAmplitudeRange = [
       (meanAmplitudeNum - adjustmentFactor) > 0.05
         ? (meanAmplitudeNum - adjustmentFactor)
-        : 0.000000001,
+        : (adjustmentFactor),
         meanAmplitudeNum,
         (meanAmplitudeNum + adjustmentFactor) > 0.05
         ? (meanAmplitudeNum + adjustmentFactor)
-        : (meanAmplitudeNum + (adjustmentFactor*20))
+        : (meanAmplitudeNum + (adjustmentFactor*50))
     ];
 
     if (meanAmplitude == 0) {
